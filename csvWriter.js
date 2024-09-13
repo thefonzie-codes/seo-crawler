@@ -1,9 +1,18 @@
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-export const csvWriter = createCsvWriter({
-    path: 'output.csv',
+const missingTagsCsv = createCsvWriter({
+    path: 'missingTags.csv',
     header: [
-        {id: 'URL', title: 'URL'},
-        {id: 'Missing', title: 'MISSING'}
+        { id: 'currentUrl', title: 'URL' },
+        { id: 'missing', title: 'MISSING' },
     ]
 });
+
+const brokenLinksCsv = createCsvWriter({
+    path: 'brokenLinks.csv',
+    header: [
+        { id: 'currentUrl', title: 'URL' } // Change 'URL' to 'currentUrl' to match your data
+    ]
+});
+
+module.exports = { missingTagsCsv, brokenLinksCsv };
